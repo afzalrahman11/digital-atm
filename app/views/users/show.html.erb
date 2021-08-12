@@ -8,5 +8,6 @@
     <li><strong>Account No.: </strong><%= account.account_no %></li>
     <li><strong>Account Type.: </strong><%= account.account_type %></li>
     <li><strong>Available Balance.: </strong><%= account.balance %></li>
+    <li><%= link_to "View", user_account_path(user_id: @user.id, id: account.id)%></li>
   </ul>
 <% end %>

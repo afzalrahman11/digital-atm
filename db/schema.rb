@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 2021_08_12_133951) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.decimal "withdraw_amount"
-    t.decimal "deposit_amount"
+    t.decimal "amount"
+    t.string "tr_action"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "account_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
