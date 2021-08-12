@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:show]
 
   def show
-    
+    @accounts = @user.accounts
   end
 
   private

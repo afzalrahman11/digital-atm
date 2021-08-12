@@ -1,0 +1,7 @@
+<% @accounts.each do|account| %>
+  <ul>
+    <li></li><strong>Account No.: </strong> <%= account.account_no %> </li>
+    <li><strong>Type: </strong> <%= account.account_type %> </li>
+    <li><strong>Balance: </strong> <%= account.balance %> </li>
+  </ul>
+<% end %>

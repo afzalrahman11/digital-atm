@@ -1,4 +1,8 @@
 <h3>This is Home Page</h3>
 <p>
   <%= link_to "About", about_path %>
+  <% if logged_in? %>
+    <%= link_to "User Details", user_path(current_user) %>
+  <% end %>
+  <%= link_to "Accounts", accounts_path %>
 </p>
