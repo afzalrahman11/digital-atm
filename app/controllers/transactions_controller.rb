@@ -5,6 +5,8 @@ class TransactionsController < ApplicationController
   def index
     @transactions = Transaction.where(account_id: params[:account_id])
                                       .order(created_at: :desc)
+                                      .paginate(page: params[:page], per_page: 8)
+    flash.now[:alert] = "No transactions yet!" if @transactions.empty?
   end
 
   def new

@@ -1,30 +1,30 @@
-<h1 class="text-center mt-4">Transactions</h1>
-
-<% if !@transactions.empty? %>
-<div class="container container-card">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered table-striped table-active">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Type</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @transactions.each do |transaction| %>
+<% if @transactions.present? %>
+  <h1 class="text-center mt-4">Transactions</h1>
+  <div class="container container-card">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered table-striped table-active">
+          <thead class="thead-dark">
             <tr>
-              <th scope="row"><%= transaction.created_at.strftime('%v - %r') %></th>
-              <td>₹<%= transaction.amount %></td>
-              <td><%= transaction.tr_action %></td>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Type</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          <% @transactions.each do |transaction| %>
+              <tr>
+                <th scope="row"><%= transaction.created_at.strftime('%v - %r') %></th>
+                <td>₹<%= transaction.amount %></td>
+                <td><%= transaction.tr_action %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<% else %>
-  <% flash[:alert] = "No transactions yet!" %>
+  <div class="flickr_pagination">
+      <%= will_paginate @transactions, :container => false %>
+  </div>
 <% end %>
