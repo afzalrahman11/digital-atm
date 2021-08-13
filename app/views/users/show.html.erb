@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<h1 class="text-center mt-4">Listing Accounts</h1>
+<h1 class="text-center mt-4">Accounts</h1>
 
 <div class="container container-card">
   <% @accounts.each do |account| %>
@@ -26,7 +26,7 @@
           </div>
           <div class="card-body">
             <strong>Account Type.: </strong><%= account.account_type %>
-            <p><strong>Available Balance.: </strong><%= account.balance %></p>     
+            <p><strong>Available Balance.: ₹</strong><%= account.balance %></p>     
           </div>
           <div class="card-footer text-muted">
             <%= link_to "Withdraw", 

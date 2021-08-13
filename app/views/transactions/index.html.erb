@@ -16,7 +16,7 @@
         <% @transactions.each do |transaction| %>
             <tr>
               <th scope="row"><%= transaction.created_at.strftime('%v - %r') %></th>
-              <td><%= transaction.amount %></td>
+              <td>₹<%= transaction.amount %></td>
               <td><%= transaction.tr_action %></td>
             </tr>
           <% end %>
