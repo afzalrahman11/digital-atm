@@ -50,3 +50,11 @@ user.accounts.each do |account|
 end
 
 puts "***** Seeding Completed *****"
+
+## Credentials
+# We have generated users with email as their names with space replaced by underscore @gmail.com
+# and password as just name in the above format.
+# Example:- 
+# user: Afzal Rahman
+# email: afzal_rahman@gmail.com
+# password: afzal_rahman
