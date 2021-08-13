@@ -11,13 +11,13 @@ class Transaction < ApplicationRecord
 
     def update_account_balance
       current_bal = account.balance
-      account.update(balance: self.credit? ? current_bal+self.amount : current_bal-self.amount)
+      account.update(balance: self.credit? ? current_bal + self.amount : current_bal-self.amount)
     end
 
     def account_balance
       if self.debit?
         current_bal = account.balance
-        errors.add(:base, "Insufficient balance") if current_bal < amount
+        errors.add(:base, "Insufficient balance") if current_bal < self.amount
       end
     end
 

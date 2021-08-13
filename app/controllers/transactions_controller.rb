@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    @transaction = Transaction.new(account_id: @account.id)
+    @transaction = Transaction.new
     @tr_action = params[:tr_action]
   end
 

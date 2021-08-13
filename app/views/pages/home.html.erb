@@ -1,7 +1,14 @@
-<h3>This is Home Page</h3>
-<p>
-  <%= link_to "About", about_path %>
-  <% if logged_in? %>
-    <%= link_to "User Details", user_path(current_user) %>
+<div class="container" id= "home-container">
+  <div class="jumbotron text-center text-white">
+  <% if !logged_in? %>
+    <h1 class="display-4">DIGITAL ATM</h1>
+    <p class="lead"><h3>Make transactions online from anytime, anywhere.</h3></p>
+    <hr class="my-4">     
+    <p>Log in to continue</p>
+    <%= link_to "Log In", login_path, class: "btn btn-success btn-lg" %>
+  <% else %>
+    <h1 class="display-4">WELCOME</h1>
+    <p class="lead"><h3>Feel free to make transactions.</h3></p>
   <% end %>
-</p>
+  </div>
+</div>
