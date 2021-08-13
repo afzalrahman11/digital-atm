@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :account
+  validate_presence_of :tr_action, :amount, :account_id
   validate :account_balance
   enum tr_action: {
     credit: "Credit", 

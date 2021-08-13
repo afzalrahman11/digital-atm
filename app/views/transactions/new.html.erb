@@ -1,5 +1,4 @@
 <h1 class="text-center mt-4">Banking</h1>
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10">
@@ -14,12 +13,9 @@
         <%= f.hidden_field :tr_action, value: @tr_action %>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit @tr_action, class: "btn btn-outline-light btn-lg" %>
+          <%= f.submit @tr_action == "credit" ? "Deposit" : "Withdraw", class: "btn btn-outline-light btn-lg" %>
         </div>
       <% end %>
-    </div>
-    <div class="mb-3">
-      <%= link_to 'Home', root_path, class: "text-info" %>
     </div>
   </div>
 </div> 

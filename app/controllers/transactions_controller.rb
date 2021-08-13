@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.where(account_id: params[:account_id])
+                                      .order(created_at: :desc)
   end
 
   def new
@@ -19,10 +20,13 @@ class TransactionsController < ApplicationController
     )
     if @transaction.save
       flash[:notice] = "Transaction succeeded."
-      redirect_to current_user
+      redirect_to user_account_transactions_path(
+        user_id: current_user.id, account_id: params[:account_id]
+        )
     else
-      flash[:alert] = "Transaction failed :#{@transaction.errors.full_messages}"
-      redirect_to current_user
+      flash[:alert] = "Transaction failed : #{@transaction.errors.full_messages.join(", ")}"
+      set_account
+      render 'new'
     end
   end
 
