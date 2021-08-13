@@ -1,18 +1,30 @@
-  <center>
-  <h3>Transactions</h3>
-    <table border="1">
-      <tr>
-        <th>Date</th>
-        <th>Amount</th>
-        <th>Type</th>
-      </tr>
-      <% @transactions.each do |transaction| %>
-        <tr>
-          <td><%= transaction.created_at %></td>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.tr_action %></td>
-        </tr>
-            
-      <% end %>
-    </table>
-  </center>
+<h1 class="text-center mt-4">Transactions</h1>
+
+<% if !@transactions.empty? %>
+<div class="container container-card">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped table-active">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @transactions.each do |transaction| %>
+            <tr>
+              <th scope="row"><%= transaction.created_at %></th>
+              <td><%= transaction.amount %></td>
+              <td><%= transaction.tr_action %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% else %>
+  <% flash[:alert] = "No transactions yet!" %>
+<% end %>
