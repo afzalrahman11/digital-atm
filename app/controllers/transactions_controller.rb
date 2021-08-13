@@ -23,10 +23,11 @@ class TransactionsController < ApplicationController
     if @transaction.save
       flash[:notice] = "Transaction succeeded."
       redirect_to user_account_transactions_path(
-        user_id: current_user.id, account_id: params[:account_id]
+         user_id: current_user.id, account_id: params[:account_id]
         )
     else
       flash[:alert] = "Transaction failed : #{@transaction.errors.full_messages.join(", ")}"
+      @tr_action = params[:transaction][:tr_action]
       set_account
       render 'new'
     end
