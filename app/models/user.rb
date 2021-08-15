@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :accounts
+  has_many :transactions
+  has_many :user_accounts
+  has_many :accounts, through: :user_accounts
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false }, 

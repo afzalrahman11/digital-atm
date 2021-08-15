@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(
+      user_id: current_user.id,
       account_id: params[:account_id], 
       amount: params[:transaction][:amount], 
       tr_action: params[:transaction][:tr_action].capitalize

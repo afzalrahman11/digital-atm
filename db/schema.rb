@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_133951) do
+ActiveRecord::Schema.define(version: 2021_08_15_163747) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "account_no"
     t.string "account_type"
-    t.decimal "balance"
+    t.decimal "balance", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -27,7 +26,18 @@ ActiveRecord::Schema.define(version: 2021_08_12_133951) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "account_id"
+    t.integer "user_id"
     t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
+  create_table "user_accounts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_user_accounts_on_account_id"
+    t.index ["user_id"], name: "index_user_accounts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +48,6 @@ ActiveRecord::Schema.define(version: 2021_08_12_133951) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "user_accounts", "accounts"
+  add_foreign_key "user_accounts", "users"
 end
